@@ -18,9 +18,7 @@
   <tr><td>v1.7</td><td>2018-06-13</td><td>
     修改了device_request_for_connection接口的描述文字。
   </td></tr>
-
 </table>
-
 
 ## API目录
 
