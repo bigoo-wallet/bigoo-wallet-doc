@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+dist/
+npm-debug.log
+export/
+src/lib/abcjs
+.env
+env
+vendor/
+www/files/
+.idea/
