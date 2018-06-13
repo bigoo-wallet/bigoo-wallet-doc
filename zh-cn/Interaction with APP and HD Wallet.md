@@ -33,6 +33,6 @@ sign: 用于校验数据来源的签名</code></pre>
 
 ### 流程
 
-<img src="interaction-with-app-and-hd-wallet-img/device_request_for_connection.png">
+<img src="https://raw.githubusercontent.com/bigoo-wallet/bigoo-wallet-doc/master/zh-cn/interaction-with-app-and-hd-wallet-img/device_request_for_connection.png">
 
 ### 
