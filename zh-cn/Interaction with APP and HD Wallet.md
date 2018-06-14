@@ -3,6 +3,9 @@
 <table>
   <tr><th>用例</th></tr>
   <tr><td><a href="#device_request_for_connection">设备每次插入手机</a></td></tr>
+  <tr><td><a href="#device_init">硬件钱包初始化</a></td></tr>
+  <tr><td><a href="#device_restore">硬件钱包设备恢复</a></td></tr>
+  <tr><td><a href="#transfer">转账</a></td></tr>
 </table>
 
 ## APP与HD Wallet交互的重点注意事项
@@ -35,4 +38,62 @@ sign: 用于校验数据来源的签名</code></pre>
 
 <img src="https://raw.githubusercontent.com/bigoo-wallet/bigoo-wallet-doc/master/zh-cn/interaction-with-app-and-hd-wallet-img/device_request_for_connection.png">
 
-### 
+### <a id="device_init"></a>硬件钱包初始化
+
+#### 请求发起方
+
+  APP
+
+#### 使用的接口
+<pre><code>app_request_for_init
+app_request_for_set_pwd
+app_request_for_init_check
+app_request_for_mnemonic_page
+app_request_for_show_pwd_keyboard
+app_request_for_input_pwd_finish
+app_request_for_tap_pwd
+app_request_for_backspace_number</code></pre>
+
+### 流程
+
+<img src="https://raw.githubusercontent.com/bigoo-wallet/bigoo-wallet-doc/master/zh-cn/interaction-with-app-and-hd-wallet-img/device_init.png">
+
+
+### <a id="device_restore"></a>硬件钱包设备恢复
+
+#### 请求发起方
+
+  APP
+
+#### 使用的接口
+<pre><code>app_request_for_show_keyboard
+app_request_for_word_input
+app_request_for_word_input_finish
+app_request_for_delete_word
+app_request_for_backspace_word
+app_request_for_tap_word
+app_request_for_show_pwd_keyboard
+app_request_for_input_pwd_finish
+app_request_for_tap_pwd
+app_request_for_backspace_number</code></pre>
+
+### 流程
+
+<img src="https://raw.githubusercontent.com/bigoo-wallet/bigoo-wallet-doc/master/zh-cn/interaction-with-app-and-hd-wallet-img/device_restore.png">
+
+### <a id="transfer"></a>转账
+
+#### 请求发起方
+
+  APP
+
+#### 使用的接口
+<pre><code>app_request_for_signature
+app_request_for_show_pwd_keyboard
+app_request_for_input_pwd_finish
+app_request_for_tap_pwd
+app_request_for_backspace_number</code></pre>
+
+### 流程
+
+<img src="https://raw.githubusercontent.com/bigoo-wallet/bigoo-wallet-doc/master/zh-cn/interaction-with-app-and-hd-wallet-img/transfer.png">
