@@ -88,7 +88,10 @@ app_request_for_backspace_number</code></pre>
   APP
 
 #### 使用的接口
-<pre><code>app_request_for_signature
+<pre><code>app_request_for_signature_start
+app_request_for_signature
+app_request_for_signature_finish
+app_request_for_signature_check
 app_request_for_show_pwd_keyboard
 app_request_for_input_pwd_finish
 app_request_for_tap_pwd

@@ -5,11 +5,15 @@
   <tr><td>v1.1</td><td>2018-05-12</td><td>添加了助记词恢复相关接口</td></tr>
   <tr><td>v1.2</td><td>2018-05-14</td><td>将接口协议改成纯文本形式</td></tr>
   <tr><td>v1.3</td><td>2018-05-14</td><td>
-    1. 删除设备重命名接口；2. 删除重置设备密码接口。以上两个接口提供的功能可以通过其他形式解决。
+    1. 删除设备重命名接口；
+    <br>
+    2. 删除重置设备密码接口。以上两个接口提供的功能可以通过其他形式解决。
   </td></tr>
   <tr><td>v1.4</td><td>2018-05-15</td><td>增加sign生成方式的说明</td></tr>
   <tr><td>v1.5</td><td>2018-05-30</td><td>
-    1. 放行密码改成6位数字；2. device_request_for_connection接口，新增一个root_address字段。
+    1. 放行密码改成6位数字；
+    <br>
+    2. device_request_for_connection接口，新增一个root_address字段。
   </td></tr>
   <tr><td>v1.6</td><td>2018-05-30</td><td>
     新增app_request_for_backspace_number接口。
@@ -17,6 +21,12 @@
 
   <tr><td>v1.7</td><td>2018-06-13</td><td>
     修改了device_request_for_connection接口的描述文字。
+  </td></tr>
+
+  <tr><td>v1.8</td><td>2018-06-15</td><td>
+    增加了app_request_for_signature_start、app_request_for_signature_finish、app_request_for_signature_check、app_request_for_restore_start、app_request_for_restore_check接口。
+    <br>
+    删除app_request_for_show_keyboard接口。
   </td></tr>
 </table>
 
@@ -27,14 +37,11 @@
   <tr><th rowspan="4">放行密码相关操作</th>
     <td><a href="#app_request_for_show_pwd_keyboard">app_request_for_show_pwd_keyboard</a></td>
     <td>显示密码输入界面</td></tr>
-  <tr>
-    <td><a href="#app_request_for_input_pwd_finish">app_request_for_input_pwd_finish</a></td>
+  <tr><td><a href="#app_request_for_input_pwd_finish">app_request_for_input_pwd_finish</a></td>
     <td>密码输入完成</td></tr>
-  <tr>
-    <td><a href="#app_request_for_tap_pwd">app_request_for_tap_pwd</a></td>
+  <tr><td><a href="#app_request_for_tap_pwd">app_request_for_tap_pwd</a></td>
     <td>当前输入的数字</td></tr>
-  <tr>
-    <td><a href="#app_request_for_backspace_number">app_request_for_backspace_number</a></td>
+  <tr><td><a href="#app_request_for_backspace_number">app_request_for_backspace_number</a></td>
     <td>删除输入的数字</td></tr>
 
   <tr><th rowspan="">外设插入，请求连接APP</th>
@@ -42,52 +49,51 @@
     <td>每次插入设备需要给APP传递的消息</td></tr>
 
 
-  <tr><th rowspan="10">设备初始化</th>
+  <tr><th rowspan="4">设备初始化</th>
     <td><a href="#app_request_for_init">app_request_for_init</a></td>
     <td>在设备屏幕上显示助记词</td></tr>
-  <tr>
-    <td><a href="#app_request_for_set_pwd">app_request_for_set_pwd</a></td>
+  <tr><td><a href="#app_request_for_set_pwd">app_request_for_set_pwd</a></td>
     <td>设置密码</td></tr>
-  <tr>
-    <td><a href="#app_request_for_init_check">app_request_for_init_check</a></td>
-    <td>APP发起设置初始化完成确认</td></tr>
-  <tr>
-    <td><a href="#app_request_for_mnemonic_page">app_request_for_mnemonic_page</a></td>
+  <tr><td><a href="#app_request_for_mnemonic_page">app_request_for_mnemonic_page</a></td>
     <td>助记词显示页面的翻页</td></tr>
-  <tr>
-    <td><a href="#app_request_for_show_keyboard">app_request_for_show_keyboard</a></td>
-    <td>助记词恢复,显示助记词录入界面</td></tr>
-  <tr>
-    <td><a href="#app_request_for_word_input">app_request_for_word_input</a></td>
-    <td>助记词恢复,单词输入确认</td></tr>
-  <tr>
-    <td><a href="#app_request_for_word_input_finish">app_request_for_word_input_finish</a></td>
-    <td>助记词恢复,单词输入完成</td></tr>
-  <tr>
-    <td><a href="#app_request_for_delete_word">app_request_for_delete_word</a></td>
-    <td>助记词恢复,删除整个单词</td></tr>
-  <tr>
-    <td><a href="#app_request_for_backspace_word">app_request_for_backspace_word</a></td>
-    <td>助记词恢复,删除上一个输入的字符</td></tr>
-  <tr>
-    <td><a href="#app_request_for_tap_word">app_request_for_tap_word</a></td>
-    <td>助记词恢复,显示刚刚输入的字母</td></tr>
+  <tr><td><a href="#app_request_for_init_check">app_request_for_init_check</a></td>
+    <td>APP发起设置初始化完成确认</td></tr>
+
+  <tr><th rowspan="7">设备恢复</th>
+    <td><a href="#app_request_for_restore_start">app_request_for_restore_start</a></td>
+    <td>开始恢复设备</td></tr>
+  <tr><td><a href="#app_request_for_word_input">app_request_for_word_input</a></td>
+    <td>单词输入确认</td></tr>
+  <tr><td><a href="#app_request_for_word_input_finish">app_request_for_word_input_finish</a></td>
+    <td>单词输入完成</td></tr>
+  <tr><td><a href="#app_request_for_delete_word">app_request_for_delete_word</a></td>
+    <td>删除整个单词</td></tr>
+  <tr><td><a href="#app_request_for_backspace_word">app_request_for_backspace_word</a></td>
+    <td>删除上一个输入的字符</td></tr>
+  <tr><td><a href="#app_request_for_tap_word">app_request_for_tap_word</a></td>
+    <td>显示刚刚输入的字母</td></tr>
+  <tr><td><a href="#app_request_for_restore_check">app_request_for_restore_check</a></td>
+    <td>设备恢复确认</td></tr>
+
 
   <tr><th rowspan="3">设备信息</th>
     <td><a href="#app_request_for_add_token">app_request_for_add_token</a></td>
     <td>记录用户已经持有的币种</td></tr>
-  <tr>
-    <td><a href="#app_request_for_get_token_list">app_request_for_get_token_list</a></td>
+  <tr><td><a href="#app_request_for_get_token_list">app_request_for_get_token_list</a></td>
     <td>获取当前外设的币种支持列表</td></tr>
-  <tr>
-    <td><a href="#app_request_for_remove_token">app_request_for_remove_token</a></td>
+  <tr><td><a href="#app_request_for_remove_token">app_request_for_remove_token</a></td>
     <td>请求设备移除用户已经持有的某个币种</td></tr>
 
-  <tr><th rowspan="3">转账</th>
-    <td><a href="#app_request_for_signature">app_request_for_signature</a></td>
-    <td>请求签名</td></tr>
-  <tr>
-    
+  <tr><th rowspan="4">转账</th>
+    <td><a href="#app_request_for_signature_start">app_request_for_signature_start</a></td>
+    <td>开始签名</td></tr>
+  <tr><td><a href="#app_request_for_signature">app_request_for_signature</a></td>
+    <td>发送签名参数</td></tr>
+  <tr><td><a href="#app_request_for_signature_finish">app_request_for_signature_finish</a></td>
+    <td>签名结束</td></tr>
+  <tr><td><a href="#app_request_for_signature_check">app_request_for_signature_check</a></td>
+    <td>签名检查</td></tr>
+
 </table>
 
 ## 手机APP与硬件钱包外设通信时的互信解决办法
@@ -432,14 +438,14 @@ page: 1    // (Int) 显示的页码
 <pre><code>method: app_request_for_mnemonic_page
 ...</code></pre>
 
-### 初始化设备——助记词恢复
+## 设备恢复
 
-#### <a id="app_request_for_show_keyboard"></a>助记词恢复第一步，显示助记词录入界面。
-<table><tr><th>接口名称</th><td>app_request_for_show_keyboard</td></tr>
+### <a id="app_request_for_restore_start"></a>开始恢复设备。显示虚拟助记词录入的键盘
+<table><tr><th>接口名称</th><td>app_request_for_restore_start</td></tr>
 <tr><th>数据发起方</th><td>APP</td></tr>
 <tr><th>数据接收方</th><td>外设</td></tr></table>
 
-##### 描述
+#### 描述
 
   显示助记词的虚拟键盘界面。每次显示，字母顺序都是随机的。如下：
 <table><tr><td>a</td><td>k</td><td>c</td><td>e</td><td>r</td><td>g</td><td>x</td></tr>
@@ -447,56 +453,56 @@ page: 1    // (Int) 显示的页码
 <tr><td>n</td><td>m</td><td>l</td><td>b</td><td>j</td><td>i</td><td>h</td></tr>
 <tr><td>v</td><td>w</td><td>f</td><td>y</td><td>z</td><td></td><td></td></tr></table>
 
-##### APP请求的内容
+#### APP请求的内容
 
-<pre><code>method: app_request_for_show_keyboard
+<pre><code>method: app_request_for_restore_start
 ...</code></pre>
 
-##### 外设返回的内容
+#### 外设返回的内容
 
-###### 成功
+##### 成功
 
-<pre><code>method: app_request_for_show_keyboard
+<pre><code>method: app_request_for_restore_start
 ...</code></pre>
 
-###### 失败
+##### 失败
 
-<pre><code>method: app_request_for_show_keyboard
+<pre><code>method: app_request_for_restore_start
 ...</code></pre>
 
-#### <a id="app_request_for_word_input"></a>助记词恢复第二步，单词输入确认
+### <a id="app_request_for_word_input"></a>单词输入
 <table><tr><th>接口名称</th><td>app_request_for_word_input</td></tr>
 <tr><th>数据发起方</th><td>APP</td></tr>
 <tr><th>数据接收方</th><td>外设</td></tr></table>
 
-##### 描述
+#### 描述
 
   已经选择的字母顺序。
 
-##### APP请求的内容
+#### APP请求的内容
 
 <pre><code>method: app_request_for_word_input
 letter_index: 1,2,3,4,5    // (String) 输入的字母顺序
 ...</code></pre>
 
-##### 外设返回的内容
+#### 外设返回的内容
 
-###### 成功
-
-<pre><code>method: app_request_for_word_input
-...</code></pre>
-
-###### 失败
+##### 成功
 
 <pre><code>method: app_request_for_word_input
 ...</code></pre>
 
-#### <a id="app_request_for_word_input_finish"></a>助记词恢复第三步，单词输入完成
+##### 失败
+
+<pre><code>method: app_request_for_word_input
+...</code></pre>
+
+### <a id="app_request_for_word_input_finish"></a>单词输入完成
 <table><tr><th>接口名称</th><td>app_request_for_word_input_finish</td></tr>
 <tr><th>数据发起方</th><td>APP</td></tr>
 <tr><th>数据接收方</th><td>外设</td></tr></table>
 
-##### 描述
+#### 描述
 
   助记词一共有12个。输入成功后，需要外设使用BIP44协议生成比特币和以太币的私钥。生成好比特币和以太坊的私钥后，需要在设备的屏幕上显示助记词。设置完成后，进入密码设置环节。至此与设备初始化的流程无异。
 
@@ -505,95 +511,149 @@ letter_index: 1,2,3,4,5    // (String) 输入的字母顺序
 <pre><code>method: app_request_for_word_input_finish
 ...</code></pre>
 
-##### 外设返回的内容
+#### 外设返回的内容
 
-###### 成功
+##### 成功
 
 <pre><code>method: app_request_for_word_input_finish
 ...</code></pre>
 
-###### 失败
+##### 失败
 
 <pre><code>method: app_request_for_word_input_finish",
 ...</code></pre>
 
-#### <a id="app_request_for_delete_word"></a>助记词恢复——删除已经输入的助记词(删除整个单词)
+### <a id="app_request_for_delete_word"></a>删除已经输入的助记词(删除整个单词)
 <table><tr><th>接口名称</th><td>app_request_for_delete_word</td></tr>
 <tr><th>数据发起方</th><td>APP</td></tr>
 <tr><th>数据接收方</th><td>外设</td></tr></table>
 
-##### 描述
+#### 描述
 
   如果输入的助记词有错误，可以通过此接口删除已经输入的助记词。可以一直删除，直到之前输入的单词都删除完为止。
 
-##### APP请求的内容
+#### APP请求的内容
 
 <pre><code>method: app_request_for_delete_word
 ...</code></pre>
 
-##### 外设返回的内容
+#### 外设返回的内容
 
-###### 成功
+##### 成功
 
 <pre><code>method: app_request_for_delete_word
   ...</code></pre>
 
-###### 失败
+##### 失败
 
 <pre><code>method: app_request_for_delete_word"
 ...</code></pre>
 
-#### <a id="app_request_for_backspace_word"></a>助记词恢复——删除上一个输入的字符
+### <a id="app_request_for_backspace_word"></a>删除上一个输入的字符
 <table><tr><th>接口名称</th><td>app_request_for_backspace_word</td></tr>
 <tr><th>数据发起方</th><td>APP</td></tr>
 <tr><th>数据接收方</th><td>外设</td></tr></table>
 
-##### 描述
+#### 描述
 
   可以删除所录入的助记词最后一个字母，直到所有录入的助记词删除为止。
 
-##### APP请求的内容
+#### APP请求的内容
 
 <pre><code>method: app_request_for_backspace_word
 ...</code></pre>
 
-##### 外设返回的内容
+#### 外设返回的内容
 
-###### 成功
+##### 成功
 
 <pre><code>method: app_request_for_backspace_word
   ...</code></pre>
 
-###### 失败
+##### 失败
 
 <pre><code>method: app_request_for_backspace_word"
 ...</code></pre>
 
-#### <a id="app_request_for_tap_word"></a>助记词恢复——刚刚输入的字母（辅助）
+### <a id="app_request_for_tap_key"></a>同步输入的字母（辅助）
 <table><tr><th>接口名称</th><td>app_request_for_tap_key</td></tr>
 <tr><th>数据发起方</th><td>APP</td></tr>
 <tr><th>数据接收方</th><td>外设</td></tr></table>
 
-##### 描述
+#### 描述
 
   当前录入的字母顺序。可用于APP与设备端屏幕显示的同步
 
-##### APP请求的内容
+#### APP请求的内容
 
-<pre><code>method: app_request_for_tap_word
+<pre><code>method: app_request_for_tap_key
 letter_index: 1    // (String) 输入的字母顺序
 ...</code></pre>
 
-##### 外设返回的内容
+#### 外设返回的内容
 
-###### 成功
+##### 成功
 
-<pre><code>method: app_request_for_tap_word
+<pre><code>method: app_request_for_tap_key
 ...</code></pre>
 
-###### 失败
+##### 失败
 
-<pre><code>method: app_request_for_tap_word
+<pre><code>method: app_request_for_tap_key
+...</code></pre>
+
+
+### <a id="app_request_for_backspace_word"></a>删除上一个输入的字符
+<table><tr><th>接口名称</th><td>app_request_for_backspace_word</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+
+  可以删除所录入的助记词最后一个字母，直到所有录入的助记词删除为止。
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_backspace_word
+...</code></pre>
+
+#### 外设返回的内容
+
+##### 成功
+
+<pre><code>method: app_request_for_backspace_word
+  ...</code></pre>
+
+##### 失败
+
+<pre><code>method: app_request_for_backspace_word"
+...</code></pre>
+
+### <a id="app_request_for_restore_check"></a>设备恢复完成后的检查
+<table><tr><th>接口名称</th><td>app_request_for_restore_check</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+
+  设备恢复，助记词输入完成后的检查确认。比如检查助记词是否存在于词典中。
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_restore_check
+letter_index: 1    // (String) 输入的字母顺序
+...</code></pre>
+
+#### 外设返回的内容
+
+##### 成功
+
+<pre><code>method: app_request_for_restore_check
+...</code></pre>
+
+##### 失败
+
+<pre><code>method: app_request_for_restore_check
 ...</code></pre>
 
 
@@ -692,23 +752,46 @@ token_list: [token_type]|[token_index]|[token_address]
 
 ## 转账
 
+### <a id="app_request_for_signature_start"></a>请求签名
+<table><tr><th>接口名称</th><td>app_request_for_signature_start</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+  请求外设开始签名。调用此接口，表示开始一次新的签名任务
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_signature_start
+...</code></pre>
+
+#### 外设返回的内容
+
+##### 成功
+
+<pre><code>method: app_request_for_signature_start
+...</code></pre>
+
+##### 失败
+
+<pre><code>method: app_request_for_signature_start
+...</code></pre>
+
 ### <a id="app_request_for_signature"></a>请求签名
 <table><tr><th>接口名称</th><td>app_request_for_signature</td></tr>
 <tr><th>数据发起方</th><td>APP</td></tr>
 <tr><th>数据接收方</th><td>外设</td></tr></table>
 
 #### 描述
-  调用申请签名接口时，需要先调用 "app_request_for_show_pwd_keyboard"接口显示密码输入界面放行界面并操作。
+  此方法有可能会循环调用。比如有多个input时，那么就会调用多次。
 
 #### APP请求的内容
 
 <pre><code>method: app_request_for_signature
-pwd_ticket: 123aew         // (String) 用于教研放行密码是否正确的随机字符串
 token_type: coin           // (String) 数字货币类型
 token_index: 60            // (Int) 数字货币SLIP44注册币种的索引
 token_address: xxxx        // (String) 如果是erc-20代币，需要给出智能合约的地址
 content: 00001002030xxx    // (String) 需要签名的内容
-pwd_ticket: 123aew         // (String) 放行密码确认凭证
 ...</code></pre>
 
 #### 外设返回的内容
@@ -716,13 +799,61 @@ pwd_ticket: 123aew         // (String) 放行密码确认凭证
 ##### 成功
 
 <pre><code>method: app_request_for_signature
-token_type: coin           // (String) 数字货币类型
-token_index: 60,           // (Int) 数字货币SLIP44注册币种的索引
-token_address: xxxx        // (String) 如果是erc-20代币，需要给出智能合约的地址
-content: 00001002030xxx    // (String) 签名后的内容
 ...</code></pre>
 
 ##### 失败
 
 <pre><code>method: app_request_for_signature
+...</code></pre>
+
+### <a id="app_request_for_signature_finish"></a>签名参数传输结束
+<table><tr><th>接口名称</th><td>app_request_for_signature_finish</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+  签名的所有参数传递结束
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_signature_finish
+...</code></pre>
+
+#### 外设返回的内容
+
+##### 成功
+
+<pre><code>method: app_request_for_signature_finish
+...</code></pre>
+
+##### 失败
+
+<pre><code>method: app_request_for_signature_finish
+...</code></pre>
+
+### <a id="app_request_for_signature_check"></a>签名结果检查
+<table><tr><th>接口名称</th><td>app_request_for_signature_check</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+  签名结束后，验证放行密码是否正确。如果正确，返回签名后的交易字符串。
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_signature_check
+pwd_ticket: abcdefg   // (String) 放行密码确认后，得出的凭证
+...</code></pre>
+
+#### 外设返回的内容
+
+##### 成功
+
+<pre><code>method: app_request_for_signature_check
+content: 000000xxxxxxxxx0000    //（String）签名后的交易字符串
+...</code></pre>
+
+##### 失败
+
+<pre><code>method: app_request_for_signature_check
 ...</code></pre>
