@@ -66,7 +66,7 @@ app_request_for_backspace_number</code></pre>
   APP
 
 #### 使用的接口
-<pre><code>app_request_for_show_keyboard
+<pre><code>app_request_for_signature_start
 app_request_for_word_input
 app_request_for_word_input_finish
 app_request_for_delete_word
@@ -75,7 +75,8 @@ app_request_for_tap_word
 app_request_for_show_pwd_keyboard
 app_request_for_input_pwd_finish
 app_request_for_tap_pwd
-app_request_for_backspace_number</code></pre>
+app_request_for_backspace_number
+app_request_for_restore_check</code></pre>
 
 ### 流程
 
