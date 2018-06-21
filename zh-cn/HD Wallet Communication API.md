@@ -33,6 +33,14 @@
     修改了 app_request_for_restore_check 接口中的描述文字。
   </td></tr>
 
+  <tr><td>v1.9</td><td>2018-06-15</td><td>
+    app_request_for_signature接口增加两个参数：
+    <br>
+    decimal: 转账的小数位数,
+    <br>
+    unit: 单位 BTC, ETH, EOS, ...
+  </td></tr>
+
   
 </table>
 
@@ -797,6 +805,8 @@ token_type: coin           // (String) 数字货币类型
 token_index: 60            // (Int) 数字货币SLIP44注册币种的索引
 token_address: xxxx        // (String) 如果是erc-20代币，需要给出智能合约的地址
 content: 00001002030xxx    // (String) 需要签名的内容
+decimal: 3                 // (Int) 转账的小数位数
+unit: ETH                  // (String) 单位 BTC, ETH, EOS, ...
 ...</code></pre>
 
 #### 外设返回的内容
