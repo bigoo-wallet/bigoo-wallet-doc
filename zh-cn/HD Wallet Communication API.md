@@ -28,6 +28,12 @@
     <br>
     删除app_request_for_show_keyboard接口。
   </td></tr>
+
+  <tr><td>v1.8</td><td>2018-06-15</td><td>
+    修改了 app_request_for_restore_check 接口中的描述文字。
+  </td></tr>
+
+  
 </table>
 
 ## API目录
@@ -636,12 +642,11 @@ letter_index: 1    // (String) 输入的字母顺序
 
 #### 描述
 
-  设备恢复，助记词输入完成后的检查确认。比如检查助记词是否存在于词典中。
+  设备恢复后，发起的检查确认。检查助记词和密码是否存已经正确保存到硬件中。
 
 #### APP请求的内容
 
 <pre><code>method: app_request_for_restore_check
-letter_index: 1    // (String) 输入的字母顺序
 ...</code></pre>
 
 #### 外设返回的内容
