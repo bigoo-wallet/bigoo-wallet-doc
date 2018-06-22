@@ -46,8 +46,8 @@
 #### 请求的数据内容
 <pre><code>{
   "data": {
-    "software_version": "1.0.1",           // (String) 设备软件版本
-    "firmware_version": "1.0.1",           // (String) 设备固件版本
+    "software_version": "1.0.1",           // (String) 必选. 设备软件版本
+    "firmware_version": "1.0.1",           // (String) 必选. 设备固件版本
     "country": "China",                    // (String) 可选. 所在国家, 没有时传递空字符串
     "province": "Beijing",                 // (String) 可选. 所在省份, 没有时传递空字符串
     "city": "Beijing"                      // (String) 可选. 所在城市, 没有时传递空字符串
