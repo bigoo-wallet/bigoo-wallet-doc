@@ -41,7 +41,21 @@
     unit: 单位 BTC, ETH, EOS, ...
   </td></tr>
 
+  <tr><td>v2.0</td><td>2018-07-06</td><td>
+    app_request_for_restore_check, app_request_for_init接口增加testnet参数
+    <br>
+    app_request_for_restore_check, app_request_for_init_check接口增加ok_for_device_name,ok_for_pin, root_address, bitcoin_pub, bitcoin_address, eth_pub, eth_address返回值。
+    <br>
+    device_request_for_connection接口增加bitcoin_pub, bitcoin_address, eth_pub, eth_address四个参数
+    <br>
+    添加恢复出厂设置接口 app_request_for_device_reset
+    <br>
+    添加助记词随机验证接口 app_request_for_mnemonic_check_start, app_request_for_mnemonic_check_input
+  </td></tr>
+
   
+
+ 
 </table>
 
 ## API目录
@@ -63,15 +77,22 @@
     <td>每次插入设备需要给APP传递的消息</td></tr>
 
 
-  <tr><th rowspan="4">设备初始化</th>
+  <tr><th rowspan="6">设备初始化</th>
     <td><a href="#app_request_for_init">app_request_for_init</a></td>
     <td>在设备屏幕上显示助记词</td></tr>
   <tr><td><a href="#app_request_for_set_pwd">app_request_for_set_pwd</a></td>
     <td>设置密码</td></tr>
   <tr><td><a href="#app_request_for_mnemonic_page">app_request_for_mnemonic_page</a></td>
     <td>助记词显示页面的翻页</td></tr>
+  <tr><td><a href="#app_request_for_mnemonic_check">app_request_for_mnemonic_check</a></td>
+    <td>开始随机检查助记词</td></tr>
+  <tr><td><a href="#app_request_for_mnemonic_check_input">app_request_for_mnemonic_check_input</a></td>
+    <td>输入设备屏幕显示的助记词位置</td></tr>
+
   <tr><td><a href="#app_request_for_init_check">app_request_for_init_check</a></td>
     <td>APP发起设置初始化完成确认</td></tr>
+
+
 
   <tr><th rowspan="7">设备恢复</th>
     <td><a href="#app_request_for_restore_start">app_request_for_restore_start</a></td>
@@ -108,6 +129,11 @@
   <tr><td><a href="#app_request_for_signature_check">app_request_for_signature_check</a></td>
     <td>签名检查</td></tr>
 
+  <tr><th rowspan="2">恢复出厂设置</th>
+    <td><a href="#app_request_for_device_reset">app_request_for_device_reset</a></td>
+    <td>恢复出厂设置</td></tr>
+
+  
 </table>
 
 ## 手机APP与硬件钱包外设通信时的互信解决办法
@@ -316,7 +342,11 @@ device_name: 设备名                // (String) 设备名字
 device_software_version: 1.0.1    // (String) 设备软件版本
 device_firmware_version: 1.0.1    // (String) 设备固件版本
 initialized: 1                    // (String) 设备是否已经完成过初始化 1: 已经完成过初始化, 0: 未完成初始化（这是个新设备）
-root_address: 1                    // (String) 比特币格式的账户ROOT地址
+root_address: 1                   // (String) 比特币格式的账户ROOT地址
+bitcoin_pub: xxxx                 // (String) 比特币公钥
+bitcoin_address: xxxx             // (String) 比特币地址
+eth_pub: xxxx                     // (String) 以太币公钥
+eth_address: xxxx                 // (String) 以太币地址
 ...</code></pre>
 
 #### APP返回的内容
@@ -350,6 +380,7 @@ user_unique_code: user_unique_code    // (String) 唯一标识用户的一个字
 #### APP请求的内容
 
 <pre><code>method: app_request_for_init
+testnet: 1                  // (Int) 1表示使用测试网络，0表示使用正式网络。默认为0
 ...</code></pre>
 
 #### 外设返回的内容
@@ -419,6 +450,13 @@ pwd_ticket: aasd1233    // (String) 放行密码确认后生成的凭证
 ##### 成功
 
 <pre><code>method: app_request_for_init_check
+ok_for_device_name: yes                      // (string) 设备名称是否设置完成， yes/no
+ok_for_pin: yes                              // (string) 设备密码是否设置完成， yes/no
+root_address: xxxxxx                         // (string) root地址
+bitcoin_pub: xxxxxx                          // (string) 比特币公钥
+bitcoin_address: xxxxxx                      // (string) 比特币地址
+eth_pub: xxxxxx                              // (string) 以太币公钥
+eth_address: xxxxxx                          // (string) 以太币地址
 ...</code></pre>
 
 ##### 失败
@@ -452,6 +490,58 @@ page: 1    // (Int) 显示的页码
 <pre><code>method: app_request_for_mnemonic_page
 ...</code></pre>
 
+### <a id="app_request_for_mnemonic_check"></a>设备初始化 开始随机检查助记词
+<table><tr><th>接口名称</th><td>app_request_for_mnemonic_check</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+
+ 在设备屏幕上随机显示4个已经存放好的助记词。然后在APP中输入这三个助记词的正确位置，以此判断用户是否正确存储了助记词。
+
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_mnemonic_check
+...</code></pre>
+
+#### 外设返回的内容
+  
+##### 成功
+<pre><code>method: app_request_for_mnemonic_check
+...</code></pre>
+
+##### 失败
+<pre><code>method: app_request_for_mnemonic_check
+...</code></pre>
+
+
+### <a id="app_request_for_mnemonic_check_input"></a>设备初始化 输入设备屏幕上显示的助记词位置
+<table><tr><th>接口名称</th><td>app_request_for_mnemonic_check_input</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+
+ 输入设备屏幕上显示的助记词位置。为4个数字
+
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_mnemonic_check_input
+index: 1,2,6,4    // (String) 4个助记词的位置
+...</code></pre>
+
+#### 外设返回的内容
+  
+##### 成功
+<pre><code>method: app_request_for_mnemonic_check_input
+...</code></pre>
+
+##### 失败
+<pre><code>method: app_request_for_mnemonic_check_input
+...</code></pre>
+
 ## 设备恢复
 
 ### <a id="app_request_for_restore_start"></a>开始恢复设备。显示虚拟助记词录入的键盘
@@ -477,6 +567,7 @@ page: 1    // (Int) 显示的页码
 ##### 成功
 
 <pre><code>method: app_request_for_restore_start
+testnet: 1                  // (Int) 1表示使用测试网络，0表示使用正式网络。默认为0
 ...</code></pre>
 
 ##### 失败
@@ -662,6 +753,13 @@ letter_index: 1    // (String) 输入的字母顺序
 ##### 成功
 
 <pre><code>method: app_request_for_restore_check
+ok_for_device_name: yes                      // (string) 设备名称是否设置完成， yes/no
+ok_for_pin: yes                              // (string) 设备密码是否设置完成， yes/no
+root_address: xxxxxx                         // (string) root地址
+bitcoin_pub: xxxxxx                          // (string) 比特币公钥
+bitcoin_address: xxxxxx                      // (string) 比特币地址
+eth_pub: xxxxxx                              // (string) 以太币公钥
+eth_address: xxxxxx                          // (string) 以太币地址
 ...</code></pre>
 
 ##### 失败
@@ -871,4 +969,32 @@ content: 000000xxxxxxxxx0000    //（String）签名后的交易字符串
 ##### 失败
 
 <pre><code>method: app_request_for_signature_check
+...</code></pre>
+
+
+## 恢复出厂设置
+
+### <a id="app_request_for_device_reset"></a>恢复出厂设置
+<table><tr><th>接口名称</th><td>app_request_for_device_reset</td></tr>
+<tr><th>数据发起方</th><td>APP</td></tr>
+<tr><th>数据接收方</th><td>外设</td></tr></table>
+
+#### 描述
+  请求设备恢复设备出厂设置，擦除设备上原有一切信息。
+
+#### APP请求的内容
+
+<pre><code>method: app_request_for_device_reset
+...</code></pre>
+
+#### 外设返回的内容
+
+##### 成功
+
+<pre><code>method: app_request_for_device_reset
+...</code></pre>
+
+##### 失败
+
+<pre><code>method: app_request_for_device_reset
 ...</code></pre>
